@@ -21,18 +21,18 @@ const float M = 0.4;  // cart mass (kg), measure on hardware
 const float g = 9.81; // gravity (m/s^2)
 const float l = 0.1;  // 1/2 rod length (m)
 const float I = m * (2.0 * l) * (2.0 * l) / 12.0; // Inertia
-const float b_friction = 0.3;
-const float alpha = 0.5;
+const float b_friction = 0.3; // friction coefficient
+const float alpha = 0.5; // gotta remember what this is
 float v_filt = 0.0;
-const int microstepping = 2;
+const int microstepping = 2; // 2 steps per normal step on the stepper
 unsigned long before = 0.0;
 
 const float r = 0.2; // gain factor
 const float k = 2.0; // centering spring factor
 const float b = 1.5;  // spring damping factor
-const float PULLEY_RADIUS = 0.0159155;  // Default pulley radius (10mm)
+const float PULLEY_RADIUS = 0.0159155;  // default pulley radius (16mm)
 
-const float PPR = 5120.0;
+const float PPR = 5120.0; 
 const float CPR = 4 * PPR;
 float circumference = 2.0 * 3.14159265358979 * PULLEY_RADIUS;
 float tick_dist = circumference / CPR;
@@ -73,7 +73,7 @@ static inline double wrap_pi(double a) { // shortest-arc, (-PI, PI]
 // --- Damping Injection variables ---
 float omega_history[1000] = {0}; 
 int history_idx = 0;
-const float DAMPING_GAIN = 0.5; // Tune this to "eat" the excess momentum
+const float DAMPING_GAIN = 0.5; // Tune this to eat the excess momentum
 
 // ============================================================================
 //  Operating mode
